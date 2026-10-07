@@ -21,4 +21,10 @@ public class Usuario {
     private String descripcion;
      @Transient //PARA QUE NO LO TOME COMO UNA COLUMNA
      private String atributoNoColumna;
+
+     //el indice de la lista y la cadena de texto : puede guardar el E de roles
+    //Guardar la cadena
+    @Enumerated(EnumType.STRING)
+    private Roles rol;
+
 }
