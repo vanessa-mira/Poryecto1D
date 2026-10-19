@@ -8,6 +8,7 @@ import mx.edu.utez.proyecto1D.repository.persona.PersonaRepository;
 import mx.edu.utez.proyecto1D.repository.usuario.UsuarioRepository;
 import mx.edu.utez.proyecto1D.model.usuario.dto.RequestCreateUserDTO;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class UsuarioService {
         this.personaRepository = personaRepository;
     }
     //Metodo para los usuarios /Servicios
-
+@Transactional
     public List<Usuario> getALLusers(){
 
         return usuarioRepository.findAll();
@@ -48,6 +49,9 @@ public class UsuarioService {
         nuevaPersona.setFechaNacimiento(payload.getFechaNacimiento());
 
         nuevaPersona= personaRepository.save(nuevaPersona);
+         //parciar
+        int numero = Integer.parseInt("t");
+
 
 
 
