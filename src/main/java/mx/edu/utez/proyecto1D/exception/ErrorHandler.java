@@ -2,6 +2,7 @@ package mx.edu.utez.proyecto1D.exception;
 
 
 import mx.edu.utez.proyecto1D.exception.customException.CustomBadRequestException;
+import mx.edu.utez.proyecto1D.exception.customException.CustomNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -24,10 +25,19 @@ public class ErrorHandler {
 
         return ResponseEntity.badRequest().body(errores);
     }
+
     @ExceptionHandler(CustomBadRequestException.class)
     public ResponseEntity<Map<String, String>> handleCustomBadRequest(CustomBadRequestException ex) {
         Map<String, String> errores = new LinkedHashMap<>();
         errores.put("error", ex.getMessage());
         return ResponseEntity.badRequest().body(errores);
+    }
+
+    @ExceptionHandler(CustomNotFoundException.class)
+    public ResponseEntity<Map<String, String>> handleCustomNotFound(CustomBadRequestException ex) {
+        Map<String, String> errores = new LinkedHashMap<>();
+        errores.put("error", ex.getMessage());
+        return ResponseEntity.badRequest().body(errores);
+
     }
 }
